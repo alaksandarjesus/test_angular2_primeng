@@ -1,0 +1,12 @@
+{
+    "port": 8000,
+    "files": [
+        "./coverage/**/*.{html,htm,css,js}"
+    ],
+    "server": {
+        "baseDir": "./coverage"
+    },
+    "ui": {
+        "port": 8001
+    }
+}

@@ -1,0 +1,9 @@
+<div class="container">
+	<h2>Posts</h2>
+	<ul>
+		<li *ngFor="let post of postList">
+			{{post.id}} - {{post.name}}
+		</li>
+	</ul>
+	<div class="error" *ngIf="error">{{error.message}}</div>
+</div>

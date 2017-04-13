@@ -1,0 +1,74 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3">
+			<div *ngFor="let serviceInfo of serviceInfoList">
+				<h4 class="pull-left text-muted" [class.text-info]="serviceInfo.active">{{serviceInfo.title}}</h4>
+				<div class="pull-right">
+					<div class="input-group input-group-sm">
+						<input [(ngModel)]="serviceInfo.id" type="number" class="form-control" placeholder="id (optional)">
+						<span class="input-group-addon" (click)="get(serviceInfo)">GET</span>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<br />
+			</div>
+		</div>
+		<div class="col-sm-9">
+			<table class="table table-sm table-striped table-responsive" *ngIf="!error">
+				<thead class="thead-inverse">
+					<tr>
+						<th *ngFor="let property of properties">
+							{{property}}
+						</th>
+						<th>
+							Update
+						</th>
+						<th>
+							Delete
+						</th>
+					</tr>					
+				</thead>
+				<tbody>
+					<tr *ngFor="let result of results">
+						<td *ngFor="let property of properties">
+							<span *ngIf="property === 'id' || property === 'createdById' || property === 'createdBy'">
+								{{result[property]}}
+							</span>
+							<input [(ngModel)]="result[property]" class="form-control form-control-sm" type="text" 
+								*ngIf="property !== 'id' && property !== 'createdById' && property !== 'createdBy'"/>
+						</td>
+						<td>
+							<button class="btn btn-sm btn-success" (click)="update(result)">Update</button>
+						</td>
+						<td>
+							<button class="btn btn-sm btn-danger" (click)="remove(result)">Delete</button>
+						</td>						
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr class="text-uppercase">
+						<td *ngFor="let property of properties">
+							<span *ngIf="property === 'id' || property === 'createdById' || property === 'createdBy'">
+							</span>
+							<input [(ngModel)]="addItem[property]" class="form-control form-control-sm" type="text" 
+								*ngIf="property !== 'id' && property !== 'createdById' && property !== 'createdBy'"/>
+						</td>
+						<td>
+							<button class="btn btn-sm btn-success" (click)="add(addItem)">Add</button>
+						</td>
+						<td>
+						</td>
+					</tr>						
+				</tfoot>
+			</table>
+			<div class="alert alert-danger" role="alert" *ngIf="error">
+				{{error.message}}
+				<br />
+				Alternatively, you can try a different service.
+			</div>
+			<div class="alert alert-success" role="alert" *ngIf="message">
+				{{message}}
+			</div>				
+		</div>
+	</div>
+</div>

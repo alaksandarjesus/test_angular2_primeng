@@ -1,0 +1,14 @@
+{
+    "/dev-api-1": {
+        "target": "http://localhost:3001",
+        "pathRewrite": {
+            "^/dev-api-1": ""
+        }
+    },
+    "/dev-api-2": {
+        "target": "http://localhost:3002",
+        "pathRewrite": {
+            "^/dev-api-2": ""
+        }
+    }
+}

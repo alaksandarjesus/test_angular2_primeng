@@ -1,0 +1,12 @@
+// @import "./bootstrap-variables-custom-material.scss"; // Substitute original for normal bootstrap
+// @import "./bootstrap.scss";
+// @import '../../node_modules/prismjs/themes/prism-okaidia.css';
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 75px;
+}

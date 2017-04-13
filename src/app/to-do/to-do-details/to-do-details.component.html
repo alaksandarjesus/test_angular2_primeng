@@ -1,0 +1,26 @@
+<div class="container">
+	<div *ngIf="toDo">
+		<h2 *ngIf="toDo.id">To Do Details: {{toDo.name}}</h2>
+		<h2 *ngIf="!toDo.id">Add To Do</h2>
+		<div class="form-group row" *ngIf="toDo.id">
+			<label class="col-sm-2 col-form-label">ID:</label>
+			<div class="col-sm-10">
+				<p class="form-control-static">{{toDo.id}}</p>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Name:</label>
+			<div class="col-sm-10">
+				<input [(ngModel)]="toDo.name" placeholder="Name" class="form-control" type="text" />
+			</div>
+		</div>
+		<div class="alert alert-danger" role="alert" *ngIf="error">
+			{{error.message}}
+		</div>
+		<div class="pull-right">
+			<button (click)="goBack()" class="btn btn-secondary" *ngIf="!toDo.id"><i class="fa fa-undo" aria-hidden="true"></i> Cancel</button>
+			<button (click)="goBack()" class="btn btn-secondary" *ngIf="toDo.id"><i class="fa fa-undo" aria-hidden="true"></i> Back</button>
+			<button (click)="save()" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Save</button>
+		</div>
+	</div>
+</div>

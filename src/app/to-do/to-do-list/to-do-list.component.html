@@ -1,0 +1,23 @@
+<div class="container">
+	<h2>My To Do List</h2>
+	<ul class="list-group">
+		<li *ngFor="let toDo of toDoList" [class.selected]="toDo === selectedToDo" class="list-group-item">
+			<button class="btn btn-link" (click)="gotoDetail(toDo)">
+				{{toDo.id}} - {{toDo.name}} - (Created By: {{toDo.createdBy}})
+      </button>
+			<button class="btn btn-danger btn-sm pull-right" (click)="deleteToDo(toDo, $event)">
+        <i class="fa fa-times" aria-hidden="true"></i> Delete</button>
+		</li>
+	</ul>
+	<button class="btn btn-primary m-t-1 m-b-1" (click)="addToDo()" *ngIf="!error || error?.status !== 403">
+    <i class="fa fa-plus" aria-hidden="true"></i> Add New To Do
+  </button>
+	<div *ngIf="addingToDo" class="row">
+		<app-to-do-details (close)="close($event)"></app-to-do-details>
+	</div>
+	<div class="alert alert-danger" role="alert" *ngIf="error">
+		{{error.message}} <br /><br />
+		<strong>In the meantime, check out some posts!</strong>
+	</div>
+</div>
+<app-post-list *ngIf="error?.status === 403"></app-post-list>
